@@ -1,1 +1,63 @@
+import java.util.Scanner;
 
+public class StudentGradeTracker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Variables to store total grades and number of subjects
+        double totalGrades = 0;
+        int numberOfSubjects = 0;
+
+        System.out.println("Enter the number of subjects:");
+        numberOfSubjects = scanner.nextInt();
+
+        // Array to store the grades
+        double[] grades = new double[numberOfSubjects];
+
+        // Input grades
+        for (int i = 0; i < numberOfSubjects; i++) {
+            System.out.print("Enter the grade for subject " + (i + 1) + ": ");
+            grades[i] = scanner.nextDouble();
+            totalGrades += grades[i];
+        }
+
+        // Calculate average grade
+        double averageGrade = totalGrades / numberOfSubjects;
+
+        // Determine letter grade
+        String letterGrade;
+        if (averageGrade >= 90) {
+            letterGrade = "A";
+        } else if (averageGrade >= 80) {
+            letterGrade = "B";
+        } else if (averageGrade >= 70) {
+            letterGrade = "C";
+        } else if (averageGrade >= 60) {
+            letterGrade = "D";
+        } else {
+            letterGrade = "F";
+        }
+
+        // Calculate GPA (assuming A = 4.0, B = 3.0, etc.)
+        double gpa;
+        if (letterGrade.equals("A")) {
+            gpa = 4.0;
+        } else if (letterGrade.equals("B")) {
+            gpa = 3.0;
+        } else if (letterGrade.equals("C")) {
+            gpa = 2.0;
+        } else if (letterGrade.equals("D")) {
+            gpa = 1.0;
+        } else {
+            gpa = 0.0;
+        }
+
+        // Display results
+        System.out.println("\nOverall Results:");
+        System.out.println("Average Grade: " + averageGrade);
+        System.out.println("Letter Grade: " + letterGrade);
+        System.out.println("GPA: " + gpa);
+
+        scanner.close();
+    }
+}
